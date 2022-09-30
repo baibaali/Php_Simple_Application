@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %}<title>Reservio</title>{% endblock %}
+    <link rel="stylesheet" href={{ asset("styles/reset.css") }}>
+    <link rel="stylesheet" href={{ asset("styles/global.css") }}>
+    <link rel="stylesheet" href={{ asset("styles/login-form.css") }}>
+    {% block fonts %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% endblock %}
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+<body>
+<header id="header">
+    {% block navbar %}
+        <nav>
+            <ul class="menu">
+                <li id="logo"><a href={{ path('index') }}><h1>RESERVIO</h1></a></li>
+                <li id="home">
+                    <a href={{ path('index') }}>
+                        <p class="homeIcon"><i class="fa fa-home"></i></p>
+                        <p class="homeText">Home</p>
+                    </a>
+                </li>
+                <li id="buildings">
+                    <a href={{ path('building_list') }}>
+                        <p class="buildingIcon"><i class="fa fa-building"></i></p>
+                        <p class="buildingText">Buildings</p>
+                    </a>
+                </li>
+                <li id="rooms">
+                    <a href={{ path('room_list') }}>
+                        <p class="buildingIcon"><i class="fa fa-building"></i></p>
+                        <p class="buildingText">Rooms</p>
+                    </a>
+                </li>
+{#                <li id="buildings">#}
+{#                    <a href={{ path('building_list') }}>#}
+{#                        <p class="buildingIcon"><i class="fa fa-building"></i></p>#}
+{#                        <p class="buildingText">Groups</p>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <li id="create"><a href={{ path('index') }}>Create</a></li>#}
+
+                {% if is_granted('ROLE_USER')%}
+                    <li id="logout">
+                        <a href={{ path('app_logout') }}>
+                            <p class="profileIcon"><i class="fa fa-logout"></i></p>
+                            <p class="profileText">Logout</p>
+                        </a>
+                    </li>
+                {% else %}
+                    <li id="login"><a id="open_pop_up" href={{ path('app_login') }}>Login</a></li>
+                    <li id="login"><a href={{ path('app_registration') }}>Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+{#  Pop-up login menu  #}
+        <div class="pop_up" id="pop_up">
+            <div class="pop_up_container">
+                <div class="pop_up_body" id="pop_up_body">
+                    <p>Login into you're account</p>
+                    <form action="">
+                        <input type="email" placeholder="E-mail">
+                        <input type="password" placeholder="Password">
+                        <button>Login</button>
+                        <div class="pop_up_close" id="pop_up_close">&#10006</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{# Pop-up logi menu end#}
+    {% endblock %}
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer>
+    <h4>Copyright © 2021 Alisher and Mikhail</h4>
+</footer>
+{#<script src={{ asset("Scripts/pop-up.js") }}></script>#}
+<script src={{ asset("Scripts/hideAndShowNavBar.js") }}></script>
+</body>
+</html>

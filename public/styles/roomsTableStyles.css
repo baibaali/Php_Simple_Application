@@ -1,0 +1,114 @@
+.roomsTable table, .actualReservations table, .requests table {
+    width: 60rem;
+    text-align: center;
+    border-radius: 0.3rem;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.roomsTable table thead tr, .actualReservations table thead tr, .requests table thead tr {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.3rem;
+    /*background: #c83240;*/
+    background: red;
+    height: 2rem;
+}
+
+.roomsTable table tr, .actualReservations table tr, .requests table tr {
+    height: 2rem;
+}
+
+.roomsTable table tr td a, .actualReservations table tr td a, .requests table tr td {
+    text-decoration: none;
+    color: blue;
+    transition: 0.15s linear;
+}
+
+.roomsTable table tr td a:hover, .actualReservations table tr td a:hover, .requests table tr td a:hover {
+    color: red;
+}
+
+.roomsTable table thead tr th, .roomsTable table tr td,
+.actualReservations table thead tr th, .actualReservations table tr td,
+.requests table thead tr th, .requests table tr td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.roomsTable table tr td, .actualReservations table tr td, .requests table thead tr td {
+    border-right: 0.2rem solid #fff;
+    border-top: 0.2rem solid #fff;
+    height: 2rem;
+}
+
+.roomsTable table tr td:last-child, .actualReservations table tr td:last-child,
+.requests table thead tr td:last-child {
+    border-right: 0;
+}
+
+.roomsTable table tbody tr:nth-child(1n), .actualReservations table tbody tr:nth-child(1n)
+.requests table tbody tr:nth-child(1n){
+    background: #f6f6f6;
+}
+
+.roomsTable table tbody tr:nth-child(2n), .actualReservations table tbody tr:nth-child(2n),
+.requests table tbody tr:nth-child(2n){
+    background: #e6e6e6;
+}
+
+.roomsTable table tbody tr:hover, .actualReservations table tbody tr:hover,
+.requests table tbody tr:hover{
+    background: #ffe8e8;
+    transition-duration: 0.6s;
+}
+
+.roomsTable table tr td.emptyTd, .actualReservations table tr.emptyTd,
+.requests table tr td.emptyTd{
+    background-color: #FFFFFF;
+    vertical-align: middle;
+}
+
+.roomsTable table tbody tr.emptyTr:hover, .actualReservations table tbody tr.emptyTr:hover,
+.requests table tbody tr.emptyTd:hover{
+    /*background-color: #000;*/
+    pointer-events: none;
+}
+
+.buttonAdd, .buttonEdit {
+    width: 5rem;
+    height: 2rem;
+    background-color: #008a00;
+    bottom: 1rem;
+    right: 1rem;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+    border-radius: 0.15rem;
+    transition: transform 0.5s;
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttonAdd:hover, .buttonEdit:hover {
+    background-color: red;
+    transform: scale(1.05);
+    transition: transform 0.5s;
+}
+
+.addRoomButton, .editBuildingButton {
+    display: flex;
+    color: #FFFFFF;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonAdd {
+    margin-right: 2rem;
+}

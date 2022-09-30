@@ -1,0 +1,129 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    top: 0;
+    position: static;
+}
+
+.block {
+    display: flex;
+    text-align: center;
+    width: 65%;
+    margin-bottom: 4rem;
+    transition: transform .35s;
+    top: 6rem;
+}
+
+.block:hover {
+    transform: scale(1.05);
+    transition: transform .5s;
+}
+
+.description {
+    font-size: 1.5rem;
+    align-self: center;
+    /*border: 1px solid green;*/
+    margin-left: 2rem;
+}
+
+.descr {
+    margin-top: 3rem;
+}
+
+.name {
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .15s linear;
+}
+
+.name:hover{
+    color: red;
+}
+
+.image {
+    margin-right: 2rem;
+}
+
+#bldImg{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 2rem;
+}
+
+#name {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+
+#name a, .descr a {
+    text-decoration: none;
+    color: #000000;
+    transition: 0.15s linear;
+}
+
+#name a:hover, .descr a:hover {
+    color: red;
+}
+
+#address {
+    color: #000;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.clockIcon, .addressIcon {
+    font-size: 2rem;
+    margin-right: 0.7rem;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.mainBlock {
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 0.1rem solid #858181;
+}
+
+.addBuildingButton{
+    width: 5rem;
+    height: 2rem;
+    background-color: #008a00;
+    bottom: 1rem;
+    right: 1rem;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+    border-radius: 0.15rem;
+    transition: transform 0.5s;
+}
+
+.addBuildingButton:hover {
+    background-color: red;
+    transform: scale(1.05);
+    transition: transform 0.5s;
+}
+
+#bldAddBtn {
+    display: flex;
+    color: #FFFFFF;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.addBuildingButton {
+    margin-top: 3rem;
+    margin-right: 2rem;
+}

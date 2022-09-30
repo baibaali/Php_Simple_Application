@@ -1,0 +1,50 @@
+.buildingDetail {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10rem;
+    text-align: center;
+}
+
+#build-image {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 1rem;
+    margin-right: 2rem;
+}
+
+.name {
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 3rem;
+}
+
+.address {
+    font-size: 1.3rem;
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.info {
+    align-self: center;
+    width: 30%;
+}
+
+.mainBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.roomsTable {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.tableAndButton {
+    display: flex;
+    flex-direction: column;
+}

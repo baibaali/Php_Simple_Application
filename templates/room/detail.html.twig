@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Buildings</title>{% endblock %}
+{% block stylesheets %}
+        <link rel="stylesheet" href={{ asset("styles/roomDetail.css") }}>
+        <link rel="stylesheet" href={{ asset("styles/roomsTableStyles.css") }}>
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <div class="mainBlock">
+            <div class="roomInfo">
+                <p id="name">
+                    {{ room.name }} {{ room.id }}
+                </p>
+                <p>
+                    Building: {{ room.building.name }}
+                </p>
+                <p>
+                    Manager: {{ room.manager }}
+                </p>
+                <p>
+                    Group: {{ room.group }}
+                </p>
+            </div>
+            <div class="actualReservations">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Room name</th>
+                        <th>Room number</th>
+                        <th>Reserved from</th>
+                        <th>Reserved to</th>
+                    </tr>
+                    </thead>
+                    {% for reservation in room.reservations %}
+                        {% if reservation.status == 'approved' %}
+                            <tr>
+                                <td>{{ room.name }}</td>
+                                <td>{{ room.number }}</td>
+                                <td>{{ reservation.getFromInString() }}</td>
+                                <td>{{ reservation.getToInString() }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="requests">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>UserId</th>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Status</th>
+                            <th>Accept</th>
+                            <th>Reject</th>
+                        </tr>
+                        </thead>
+                        {% for request in room.requests %}
+                            <tr>
+                                <td>{{ request.user.id }}</td>
+                                <td>{{ request.user.username }}</td>
+                                <td>{{ request.user.firstName }}</td>
+                                <td>{{ request.user.lastName }}</td>
+                                <td>{{ request.status }}</td>
+                                <td>
+                                    {% if request.status == 'pending' %}
+                                        <form action="/rooms/{{ request.room.id }}/request/" method="post">
+                                            <input type="hidden" name="_method" value="PATCH">
+                                            <input type="hidden" name="user_id" value="{{ request.user.id }}">
+                                            <input type="hidden" name="room_id" value="{{ request.room.id }}">
+                                            <button type="submit" name="status" value="approved">A</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if request.status == 'pending' %}
+                                        <form action="/rooms/{{ request.room.id }}/request/" method="post">
+                                            <input type="hidden" name="_method" value="PATCH">
+                                            <input type="hidden" name="user_id" value="{{ request.user.id }}">
+                                            <input type="hidden" name="room_id" value="{{ request.room.id }}">
+                                            <button type="submit" name="status" value="denied">D</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="requests">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>UserId</th>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Status</th>
+                            <th>Accept</th>
+                            <th>Reject</th>
+                        </tr>
+                        </thead>
+                        {% for reservation in room.reservations %}
+                            <tr>
+                                <td>{{ reservation.user.id }}</td>
+                                <td>{{ reservation.user.username }}</td>
+                                <td>{{ reservation.user.firstName }}</td>
+                                <td>{{ reservation.user.lastName }}</td>
+                                <td>{{ reservation.getFromInString }}</td>
+                                <td>{{ reservation.getToInString }}</td>
+                                <td>{{ reservation.status }}</td>
+                                <td>
+                                    {% if reservation.status == 'pending' %}
+                                        <form action="/rooms/{{ reservation.room.id }}/request/" method="post">
+                                            <input type="hidden" name="_method" value="PATCH">
+                                            <input type="hidden" name="user_id" value="{{ reservation.user.id }}">
+                                            <input type="hidden" name="room_id" value="{{ reservation.room.id }}">
+                                            <button type="submit" name="status" value="approved">A</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reservation.status == 'pending' %}
+                                        <form action="/rooms/{{ reservation.room.id }}/request/" method="post">
+                                            <input type="hidden" name="_method" value="PATCH">
+                                            <input type="hidden" name="user_id" value="{{ reservation.user.id }}">
+                                            <input type="hidden" name="room_id" value="{{ reservation.room.id }}">
+                                            <button type="submit" name="status" value="denied">D</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+                {% if status == 'pending' %}
+                    <p class="membershipInfo">Your application for a room membership is pending</p>
+                {% elseif status == 'denied' %}
+                    <p class="membershipInfoo">Your application for a room membership was rejected</p>
+                {% elseif is_granted('reservation', app.user) or is_granted('ROLE_ADMIN') %}
+                    <div class="reserveButton">
+                        <a href="{{ path('room_reservation', {'id': room.id}) }}" id="buttonLink">Reserve the room</a>
+                    </div>
+{#                {% if is_granted('reservation', app.user) or is_granted('ROLE_ADMIN') %}#}
+                {% else %}
+                    <form action="/rooms/{{ room.id }}/request" id="membershipButton" method="post">
+                        <button type="submit">Become a member</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+

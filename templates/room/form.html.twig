@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Buildings</title>{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href={{ asset("styles/registrationForm.css") }}>
+{% endblock %}
+{% block navbar %}{% endblock %}
+{% block content %}
+    <div class="form">
+        <div class="formContainer">
+            <div class="formBody">
+{#                <p>Sign Up</p>#}
+                {{ form_start(form) }}
+                <div>{{ form_label(form.from, 'From:') }}</div>
+                <div>{{ form_widget(form.from, {'attr': {'class': 'dateTimeField', 'placeholder': 'Frist Name'}}) }}</div>
+                <div class="dateTimeField">{{ form_label(form.to, 'To:') }}</div>
+                <div>{{ form_widget(form.to, {'attr': {'class': 'dateTimeField', 'placeholder': 'Frist Name'}}) }}</div>
+                <button type="submit">Reserve</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{#    {{ form_start(form) }}#}
+{#    {{ form_end(form) }}#}
+{% endblock %}

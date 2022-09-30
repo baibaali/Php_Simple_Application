@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Buildings</title>{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href={{ asset("styles/registrationForm.css") }}>
+{% endblock %}
+{% block navbar %}{% endblock %}
+{% block content %}
+<form class="form" method="post">
+        <div class="formContainer">
+            <div class="formBody">
+                {% if error %}<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>{% endif %}
+                <p>Login</p>
+                <div>
+{#                    <label for="inputUsername">Username</label>#}
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Username" autocomplete="username" required autofocus>
+                </div>
+                <div>
+{#                    <label for="inputPassword">Password</label>#}
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" autocomplete="current-password" required>
+                </div>
+                <div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </div>
+                <div class="checkboxContainer">
+                    <label class="container"><p>Remember me</p>
+                        <input type="checkbox" name="_remember_me">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="form__button">
+                    <button type="submit">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+

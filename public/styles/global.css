@@ -1,0 +1,158 @@
+
+:root {
+    font-size: 1rem;
+    color: #484848;
+    font-family: 'Bebas Neue', cursive;
+}
+
+body{
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /*border: 1px solid darkgray;*/
+}
+
+
+header {
+    position: fixed;
+    transition: top 0.4s;
+    width: 100%;
+    background-color: #fff;
+    z-index: 5;
+}
+
+header > nav {
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 0.3rem solid red;
+}
+
+header > nav > .menu {
+    display: flex;
+    color: white;
+}
+
+header > nav > .menu > li {
+    display: flex;
+    padding: 0.5rem;
+    text-align: center;
+    margin: auto 1.5rem;
+    height: 2rem;
+}
+
+header > nav > .menu > li > a{
+    text-decoration: none;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    transition: 0.15s linear;
+}
+
+header > nav > .menu > li > a:hover{
+    color: red;
+}
+header > nav > .menu > #logo > a {
+    font-size: 2rem;
+}
+
+header > nav > .menu > #logo > a:hover{
+    color: red;
+}
+
+main{
+    margin-bottom: 2.4rem;
+    flex: 1 0 auto;
+}
+
+#login, #logout {
+    width: 4rem;
+    color: red;
+    justify-content: center;
+    align-self: flex-end;
+    border: 0.15rem solid red;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#logout {
+    width: 6rem;
+}
+
+#login > a, #logout > a {
+    color: red;
+}
+
+#login:hover, #login:hover a, #logout:hover, #logout:hover a {
+    color: black;
+    border-color: black;
+}
+
+#home {
+    margin-left: 5rem;
+
+}
+
+#rooms {
+    margin-right:auto;
+}
+
+footer {
+    /*background-color: darkgray;*/
+    padding: 0.7rem;
+    text-align: center;
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*left: 0;*/
+    /*opacity: 0.8;*/
+    flex: 0 0 auto;
+}
+
+#logo {
+    font-size: 2rem;
+}
+
+#search{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+#searchForm{
+    position: relative;
+    display: flex;
+}
+
+#search--search{
+    width: 20rem;
+    height: 2rem;
+    border: 3px solid #1671d0;
+    border-right: none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+#search--search:focus{
+    color: #1671d0;
+}
+
+#but {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid #1671d0;
+    background: #1671d0;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.profileIcon, .homeIcon, .buildingIcon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+

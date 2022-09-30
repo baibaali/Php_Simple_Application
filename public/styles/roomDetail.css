@@ -1,0 +1,73 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+#name {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 2rem;
+}
+
+.actualReservations {
+    margin-top: 4rem;
+}
+
+.actualReservations table {
+    width: 40rem;
+}
+
+.requests {
+    margin-top: 4rem;;
+}
+
+.membershipButton, .reserveButton {
+    width: 7rem;
+    height: 3rem;
+    background-color: #008a00;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    border-radius: 0.15rem;
+    transition: transform 0.5s;
+    margin-top: 3rem;
+}
+
+.membershipButton:hover, .reserveButton:hover {
+    background-color: red;
+    transform: scale(1.05);
+    transition: transform 0.5s;
+}
+
+#membershipButtonLink, #buttonLink {
+    display: flex;
+    color: #FFFFFF;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.membershipInfo {
+    margin-top: 3rem;
+}
+
+/*.membershipButton>#membershipButtonLink, .reserveButton>#buttonLink {*/
+/*    !*display: block;*!*/
+/*    !*text-decoration: none;*!*/
+/*}*/

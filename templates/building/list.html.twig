@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Buildings</title>{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href={{ asset("styles/buildings.css") }}>
+    <link rel="stylesheet" href={{ asset("styles/roomsTableStyles.css") }}>
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block content %}
+    {% for building in buildings %}
+        <div class="wrapper">
+            <div class="mainBlock">
+                <div class="block">
+                    <div class="image">
+                        <img id="bldImg" src="{{ building.getImageUrl() }}" width="100" height="100" alt={{ building.getName() }}>
+                    </div>
+                    <div class="descr">
+                        <dl>
+                            <dd id="name"><a href={{ path('building_detail', {'id': building.id}) }} {% if not is_granted('ROLE_ADMIN') %}style="pointer-events:none"{% endif %}>{{ building.getName() }}</a></dd>
+                            <dd id="address">Address: {{ building.getAddress() }}</dd>
+                            <dd>
+
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="roomsTable">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Room name</th>
+                            <th>Room number</th>
+                            <th>Building</th>
+                            <th>Room manager</th>
+                            <th>Group</th>
+                        </tr>
+                        </thead>
+                        {% for room in building.getRooms() %}
+                            <tr>
+                                <td>{{ room.name }}</td>
+                                <td><a href={{ path('room_detail', {'id': room.id}) }}>{{ room.number }}</a></td>
+                                <td>{{ building.name }}</td>
+                                {% if room.manager is not null %}
+                                    <td>{{ room.manager.firstName }} {{ room.manager.lastName }}</td>
+                                {% else %}
+                                    <td>-</td>
+                                {% endif %}
+                                {% if room.group is not null %}
+                                    <td>{{ room.group.name }}</td>
+                                {% else %}
+                                    <td>-</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <form action="/buildings/create" mthod=“POST” class="addBuildingButton">
+            <button>Add building</button>
+        </form>
+{#        <div class="addBuildingButton">#}
+{#            <a href={{ path('building_create') }} id="bldAddBtn">Add building</a>#}
+{#        </div>#}
+    {% endif %}
+{% endblock %}
+
+
